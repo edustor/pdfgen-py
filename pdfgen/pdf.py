@@ -18,6 +18,7 @@ def make_pdf(page_count, output_file):
 
 def _make_grid(c, x_cells=40, y_cells=56, cell_side=5 * mm):
     c.setLineWidth(0.1)
+    c.setStrokeGray(0.5)
 
     page_width, page_height = A4
 
