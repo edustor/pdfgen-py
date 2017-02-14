@@ -48,9 +48,6 @@ def make_pdf(page_count, output_file, x_cells=40, y_cells=56, cell_side=5 * mm):
                       x_max - qr_code_side, y_min, qr_code_side, qr_code_side)
 
         c.showPage()
-
-        print(page_id)
-
     c.save()
 
 
