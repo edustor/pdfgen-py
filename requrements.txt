@@ -1,5 +1,5 @@
 reportlab==3.3.0
 pytz==2016.10
-PyQRCode==1.2.1
 pypng==0.0.18
 flask==0.12
+qrcode==5.3

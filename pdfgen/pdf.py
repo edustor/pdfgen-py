@@ -3,13 +3,14 @@ import tempfile
 import uuid
 from datetime import datetime
 
-import pyqrcode
 import pytz
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import mm
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
+import qrcode
+import qrcode.constants
 
 
 def make_pdf(page_count, output_file, x_cells=40, y_cells=56, cell_side=5 * mm):
@@ -93,8 +94,8 @@ def _draw_qr_code(qr_str, c, x, y, width, height):
     :param height: qr height, in pt
     :return: None
     """
-    path = tempfile.mkstemp()[1]
-    pyqrcode.create(qr_str, error="L") \
-        .png(path, quiet_zone=0)
-    c.drawImage(path, x, y, width, height)
-    os.remove(path)
+    with tempfile.NamedTemporaryFile() as file:
+        img = qrcode.make(qr_str, error_correction=qrcode.constants.ERROR_CORRECT_L, border=0)
+        img.save(file)
+
+        c.drawImage(file.name, x, y, width, height)
