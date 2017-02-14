@@ -1,4 +1,3 @@
-import os
 import tempfile
 import uuid
 from datetime import datetime
@@ -24,10 +23,11 @@ def make_pdf(page_count, output_file, x_cells=40, y_cells=56, cell_side=5 * mm):
     """
     c = canvas.Canvas(output_file, A4)
     pdfmetrics.registerFont(TTFont("Proxima Nova Thin", "resources/pnt.ttf"))
-    c.setFont("Proxima Nova Thin", 11)
 
     for n in range(page_count):
         x_min, x_max, y_min, y_max = _make_grid(c, x_cells, y_cells, cell_side)
+
+        c.setFont("Proxima Nova Thin", 11)
 
         page_id = str(uuid.uuid4())
         top_row_y = y_max + 3
