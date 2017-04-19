@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: edustor-pdfgen-{{ checksum "requirements.txt" }}
+          key: edustor-pdfgen-{{ checksum "requirements.txt" }}-{{ checksum "test-requirements.txt" }}
       - run: |
           apt update
           apt install -y libqrencode-dev
@@ -22,10 +22,9 @@ jobs:
           path: ~/edustor-pdfgen/test_results
           destination: edustor-pdfgen-test-results
       - save_cache:
-          key: edustor-pdfgen-{{ checksum "requirements.txt" }}
+          key: edustor-pdfgen-{{ checksum "requirements.txt" }}-{{ checksum "test-requirements.txt" }}
           paths:
             - ~/edustor-pdfgen/pip-cache
-            - /var/cache/apt/archives/
       - run:
           name: Trigger deploy
           command: |
