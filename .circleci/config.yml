@@ -24,7 +24,7 @@ jobs:
       - save_cache:
           key: edustor-pdfgen-{{ checksum "requirements.txt" }}
           paths:
-            - /usr/lib/python3
+            - /usr/local/lib/python3.6/site-packages
       - run:
           name: Trigger deploy
           command: |
