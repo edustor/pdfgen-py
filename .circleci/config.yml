@@ -4,6 +4,8 @@ jobs:
     working_directory: ~/edustor-pdfgen
     docker:
       - image: python:3.6
+    environment:
+      TERM: dumb
     steps:
       - checkout
       - run: |
