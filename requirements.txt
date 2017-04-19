@@ -2,4 +2,4 @@ reportlab==3.3.0
 pytz==2016.10
 pypng==0.0.18
 flask==0.12
-qrcode==5.3
+libqrencode-cffi==0.1.1

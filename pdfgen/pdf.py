@@ -8,8 +8,7 @@ from reportlab.lib.units import mm
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
-import qrcode
-import qrcode.constants
+import libqrencode as qrcode
 
 
 def make_pdf(page_count, output_file, x_cells=40, y_cells=56, cell_side=5 * mm):
@@ -94,8 +93,9 @@ def _draw_qr_code(qr_str, c, x, y, width, height):
     :param height: qr height, in pt
     :return: None
     """
-    with tempfile.NamedTemporaryFile() as file:
-        img = qrcode.make(qr_str, error_correction=qrcode.constants.ERROR_CORRECT_L, border=0)
+    with tempfile.NamedTemporaryFile(suffix=".jpg") as file:
+        qr = qrcode.QRCode(bytes(qr_str, "utf-8"))
+        img = qr.get_im(0)
         img.save(file)
 
         c.drawImage(file.name, x, y, width, height)
