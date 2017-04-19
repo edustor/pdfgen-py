@@ -3,3 +3,4 @@ pytz==2016.10
 pypng==0.0.18
 flask==0.12
 libqrencode-cffi==0.1.1
+uwsgi==2.0.14
