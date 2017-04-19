@@ -8,6 +8,8 @@ jobs:
       TERM: dumb
     steps:
       - checkout
+      - restore_cache:
+          key: edustor-pdfgen-{{ checksum "requirements.txt" }}
       - run: |
           apt update
           apt install -y libqrencode-dev
