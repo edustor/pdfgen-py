@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route("/")
 @app.route("/<int:page_count>")
-def root(page_count=1):
+def root(page_count=20):
     if page_count > 100:
         abort(400, "Too many pages requested")
 

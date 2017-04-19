@@ -31,7 +31,7 @@ def make_pdf(page_count, output_file, x_cells=40, y_cells=56, cell_side=5 * mm):
         page_id = str(uuid.uuid4())
         top_row_y = y_max + 3
         c.drawString(x_min, top_row_y, "Edustor Alpha")
-        c.drawRightString(x_max, top_row_y, "#{} #______".format(page_id[-12:-8]))
+        c.drawRightString(x_max, top_row_y, "#{} #________".format(page_id[-12:-8]))
 
         c.setFontSize(8)
         bottom_row_y = y_min - 8
@@ -93,9 +93,9 @@ def _draw_qr_code(qr_str, c, x, y, width, height):
     :param height: qr height, in pt
     :return: None
     """
-    with tempfile.NamedTemporaryFile(suffix=".jpg") as file:
+    with tempfile.NamedTemporaryFile() as file:
         qr = qrcode.QRCode(bytes(qr_str, "utf-8"))
         img = qr.get_im(0)
-        img.save(file)
+        img.save(file, 'png')
 
         c.drawImage(file.name, x, y, width, height)
