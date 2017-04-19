@@ -14,8 +14,8 @@ jobs:
           apt update
           apt install -y libqrencode-dev
       - run: |
-          pip3 install -r requirements.txt
-          pip3 install -r test-requirements.txt
+          pip3 install --cache-dir pip-cache -r requirements.txt
+          pip3 install --cache-dir pip-cache -r test-requirements.txt
       - run: |
           pytest
       - store_artifacts:
@@ -24,7 +24,8 @@ jobs:
       - save_cache:
           key: edustor-pdfgen-{{ checksum "requirements.txt" }}
           paths:
-            - /usr/local/lib/python3.6/site-packages
+            - ~/edustor-pdfgen/pip-cache
+            - /var/cache/apt/archives/
       - run:
           name: Trigger deploy
           command: |
