@@ -84,7 +84,7 @@ def _make_grid(c, x_cells, y_cells, cell_side):
 
 def _draw_qr_code(qr_str, c, x, y, width, height):
     """
-    Draws qr code to canvas
+    Draws qr code on canvas
     :param qr_str: string to encode
     :param c: target canvas
     :param x: left bottom corner x coordinate
