@@ -51,7 +51,7 @@ jobs:
           name: Build docker image
           command: |
             docker login -u="edustor+ci" -p="$REGISTRY_PASSWORD" quay.io
-            docker build -t $IMAGE_NAME:ci-$CIRCLE_BUILD_NUM -f ci.Dockerfile .
+            docker build -t $IMAGE_NAME:ci-$CIRCLE_BUILD_NUM  .
             docker tag $IMAGE_NAME:ci-$CIRCLE_BUILD_NUM $IMAGE_NAME:latest
       - run:
           name: Push docker image
