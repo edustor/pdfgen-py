@@ -21,6 +21,7 @@ def make_pdf(page_count, output_file, x_cells=40, y_cells=56, cell_side=5 * mm):
     :param cell_side: cell side size, in pt
     """
     c = canvas.Canvas(output_file, A4)
+    c.setTitle("Edustor blank pages")
     pdfmetrics.registerFont(TTFont("Proxima Nova Thin", "resources/pnt.ttf"))
 
     for n in range(page_count):
