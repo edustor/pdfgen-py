@@ -7,4 +7,4 @@ RUN pip3 install -r requirements.txt
 
 ADD . /code
 
-CMD uwsgi --http :9090 --wsgi-file main.py --callable app --master --stats :9191
+CMD uwsgi --http :8080 --wsgi-file main.py --callable app --master --stats :8081
